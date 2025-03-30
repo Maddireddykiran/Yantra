@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import '../styles/Carousel/Carousel.css';
+import '../styles/Carousel/carousel.css';
 
 const Carousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
