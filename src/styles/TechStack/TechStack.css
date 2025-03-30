@@ -1,0 +1,200 @@
+/* TechStackMarquee.css */
+.tech-stack-section {
+    width: 100%;
+    padding: 2rem 0;
+    background-color: #f8f9fa;
+  }
+  
+  .tech-header {
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+    padding: 0 1rem;
+  }
+  
+  .tech-badge {
+    display: inline-block;
+    background-color: #ffe9ef;
+    color: #FF0042;
+    font-size: 1.25rem;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 30px;
+    margin-bottom: 1rem;
+  }
+  
+  .tech-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  
+  .tech-description {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .tech-stack-container {
+    width: 100%;
+    overflow: hidden;
+    padding: 1rem 0;
+  }
+  
+  .marquee-wrapper {
+    overflow: hidden;
+    position: relative;
+    margin: 1.5rem 0;
+    width: 100%;
+  }
+  
+  .marquee {
+    display: flex;
+    animation: scroll 30s linear infinite;
+    will-change: transform;
+    padding: 1rem 0;
+    width: max-content;
+  }
+  
+  .marquee-normal {
+    animation-direction: normal;
+  }
+  
+  .marquee-reverse {
+    animation-direction: reverse;
+  }
+  
+  .tech-item {
+    display: flex;
+    margin: 0 1.5rem;
+    min-width: 180px;
+    flex-shrink: 0;
+  }
+  
+  .tech-logo-container {
+    display: flex;
+    align-items: center;
+    background-color: #f4ecee;
+    border: 1px solid #FFF8FA;
+    border-radius: 12px;
+    padding: 0.75rem 1.25rem;
+    gap: 1rem;
+    width: 100%;
+    transition: transform 0.3s ease;
+  }
+  
+  .tech-logo {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    filter: grayscale(20%);
+    transition: all 0.3s ease;
+  }
+  
+  .tech-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+  }
+  
+  .tech-item:hover .tech-logo {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+  }
+  
+  .tech-item:hover .tech-logo-container {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 1024px) {
+    .tech-item {
+      min-width: 160px;
+      margin: 0 1rem;
+    }
+    
+    .tech-logo-container {
+      padding: 0.6rem 1rem;
+    }
+    
+    .tech-logo {
+      width: 35px;
+      height: 35px;
+    }
+    
+    .tech-name {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .tech-title {
+      font-size: 1.75rem;
+    }
+    
+    .tech-description {
+      font-size: 1rem;
+      padding: 0 1rem;
+    }
+    
+    .tech-item {
+      min-width: 140px;
+      margin: 0 0.75rem;
+    }
+    
+    .tech-logo {
+      width: 30px;
+      height: 30px;
+    }
+    
+    .tech-name {
+      font-size: 0.85rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .tech-badge {
+      font-size: 1rem;
+      padding: 0.5rem 1.25rem;
+    }
+    
+    .tech-title {
+      font-size: 1.5rem;
+    }
+    
+    .tech-description {
+      font-size: 0.9rem;
+    }
+    
+    .tech-item {
+      min-width: 120px;
+      margin: 0 0.5rem;
+    }
+    
+    .tech-logo-container {
+      padding: 0.5rem;
+      gap: 0.5rem;
+    }
+    
+    .tech-name {
+      font-size: 0.8rem;
+    }
+    
+    .marquee {
+      animation-duration: 20s;
+    }
+  } 
