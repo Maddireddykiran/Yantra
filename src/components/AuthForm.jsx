@@ -30,29 +30,7 @@ const AuthForm = () => {
     setActiveForm('signin');
   };
 
-  // const handleEmailSignUp = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await createUserWithEmailAndPassword(auth, email, password);
-  //     setMessage('Account created successfully!');
-  //     setIsSuccess(true);
-  //     setTimeout(() => {
-  //       navigate('#sign-in-container');
-  //       handleSignInClick();
-  //     }, 2000);
-  //   } catch (error) {
-  //     if (error.code === 'auth/email-already-in-use') {
-  //       setMessage('User already exists....');
-  //       setIsSuccess(false);
-  //     } else {
-  //       setMessage(error.message);
-  //       setIsSuccess(false);
-        
-  //     }
-  //     setMessage("");
-  //   }
-
-  // };
+  
   const handleEmailSignUp = async (e) => {
     e.preventDefault();
     try {
