@@ -8,7 +8,7 @@ const Footer = () => {
             <div className="links-column">
               <h3>Company</h3>
               <ul>
-                <li>About Us</li>
+                <li>About</li>
                 <li>In Media</li>
                 <li>Case Studies</li>
                 <li>Our Blog</li>
