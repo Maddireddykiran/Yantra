@@ -1,4 +1,3 @@
-
 import React, { useRef, useState } from 'react';
 import '../styles/Auth/Auth.css';
 import { FcGoogle } from "react-icons/fc";
@@ -30,7 +29,7 @@ const AuthForm = () => {
     setActiveForm('signin');
   };
 
-  
+ 
   const handleEmailSignUp = async (e) => {
     e.preventDefault();
     try {
@@ -104,89 +103,110 @@ const AuthForm = () => {
     }
   };
 
-  return(  <div className="signinup-container">
-  <div className="container" id="container" ref={containerRef}>
-    <div className="form-container sign-up-container" id='sign-up-container'>
-      <form onSubmit={handleEmailSignUp}>
-        <h1>Create Account</h1>
-        <div className="social-container">
-          <button type="button" className='signup' onClick={handleGoogleSignIn}>
-            <FcGoogle /><span>Google</span>
-          </button>
+  return (
+    <div className="signinup-container">
+      <div className="container" id="container" ref={containerRef}>
+        <div 
+          className={`form-container sign-up-container ${activeForm === 'signup' ? 'active' : ''}`} 
+          id='sign-up-container'
+        >
+          <form onSubmit={handleEmailSignUp}>
+            <h1>Create Account</h1>
+            <div className="social-container">
+              <button type="button" className='signup' onClick={handleGoogleSignIn}>
+                <FcGoogle /><span>Google</span>
+              </button>
+            </div>
+            <span>or use your email for registration</span>
+            <input 
+              type="text" 
+              placeholder="Name" 
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <input 
+              type="email" 
+              placeholder="Email" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <input 
+              type="password" 
+              placeholder="Password" 
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <button type="submit">Sign Up</button>
+            <span 
+              className="toggle-form-link"
+              onClick={handleSignInClick}
+            >
+              Already have an account? Sign In
+            </span>
+          </form>
         </div>
-        <span>or use your email for registration</span>
-        <input 
-          type="text" 
-          placeholder="Name" 
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <input 
-          type="email" 
-          placeholder="Email" 
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input 
-          type="password" 
-          placeholder="Password" 
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit">Sign Up</button>
-      </form>
-    </div>
-    <div className="form-container sign-in-container" id="sign-in-container">
-      <form onSubmit={handleEmailSignIn}>
-        <h1>Sign in</h1>
-        <div className="social-container">
-          <button type="button" className='signup' onClick={handleGoogleSignIn}>
-            <FcGoogle /><span>Google</span>
-          </button>
+        <div 
+          className={`form-container sign-in-container ${activeForm === 'signin' ? 'active' : ''}`} 
+          id="sign-in-container"
+        >
+          <form onSubmit={handleEmailSignIn}>
+            <h1>Sign in</h1>
+            <div className="social-container">
+              <button type="button" className='signup' onClick={handleGoogleSignIn}>
+                <FcGoogle /><span>Google</span>
+              </button>
+            </div>
+            <span>or use your account</span>
+            <input 
+              type="email" 
+              placeholder="Email" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            <input 
+              type="password" 
+              placeholder="Password" 
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <a href="#">Forgot your password?</a>
+            <button type="submit">Sign In</button>
+            <span 
+              className="toggle-form-link"
+              onClick={handleSignUpClick}
+            >
+              Don't have an account? Sign Up
+            </span>
+          </form>
         </div>
-        <span>or use your account</span>
-        <input 
-          type="email" 
-          placeholder="Email" 
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input 
-          type="password" 
-          placeholder="Password" 
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <a href="#">Forgot your password?</a>
-        <button type="submit">Sign In</button>
-      </form>
-    </div>
-    <div className="overlay-container">
-      <div className="overlay">
-        <div className="overlay-panel overlay-left">
-          <h1>Welcome Back!</h1>
-          <p>To keep connected with us please login with your personal info</p>
-          <button className="ghost" id="signIn" onClick={handleSignInClick}>Sign In</button>
-        </div>
-        <div className="overlay-panel overlay-right">
-          <h1>Hello, Friend!</h1>
-          <p>Enter your personal details and start journey with us</p>
-          <button className="ghost" id="signUp" onClick={handleSignUpClick}>Sign Up</button>
-        </div>
+        {window.innerWidth > 768 && (
+          <div className="overlay-container">
+            <div className="overlay">
+              <div className="overlay-panel overlay-left">
+                <h1>Welcome Back!</h1>
+                <p>To keep connected with us please login with your personal info</p>
+                <button className="ghost" id="signIn" onClick={handleSignInClick}>Sign In</button>
+              </div>
+              <div className="overlay-panel overlay-right">
+                <h1>Hello, Friend!</h1>
+                <p>Enter your personal details and start journey with us</p>
+                <button className="ghost" id="signUp" onClick={handleSignUpClick}>Sign Up</button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
+      {message && (
+        <div className={`message ${isSuccess ? 'success' : 'error'}`}>
+          {message}
+        </div>
+      )}
     </div>
-  </div>
-  {message && (
-    <div className={`message ${isSuccess ? 'success' : 'error'}`}>
-      {message}
-    </div>
-  )}
-</div>
-);
+  );
 };
 
 export default AuthForm;
