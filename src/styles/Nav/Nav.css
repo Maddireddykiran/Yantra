@@ -144,7 +144,25 @@ body {
 .btn-light:hover a {
     color: white;
 }
+/* Logout button loading state */
+.btn-light.logging-out {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
 
+.logout-loader {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
@@ -154,7 +172,7 @@ body {
     .logo {
         margin-bottom: 15px;
     }
-    .btn-light{
+.btn-light{
         width: 120px;
         padding-block: 0.3rem;
         padding-right:0.4rem;

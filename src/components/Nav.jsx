@@ -1,13 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import "../styles/Nav/Nav.css"; 
+import { auth } from '../../firebaseConfig';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 
 function Nav() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState(null);
+    const [user, setUser] = useState(null);
     const navRef = useRef(null);
     
     useEffect(() => {
+        // Check auth state
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        });
+
         const handleClickOutside = (e) => {
             if (navRef.current && !navRef.current.contains(e.target)) {
                 setActiveDropdown(null);
@@ -16,9 +24,19 @@ function Nav() {
 
         document.addEventListener('mousedown', handleClickOutside);
         return () => {
+            unsubscribe();
             document.removeEventListener('mousedown', handleClickOutside);
         };
     }, []);
+
+    const handleLogout = async () => {
+        try {
+            await signOut(auth);
+            // User is automatically set to null via the onAuthStateChanged listener
+        } catch (error) {
+            console.error("Error signing out: ", error);
+        }
+    };
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -82,17 +100,22 @@ function Nav() {
                         <a href="#">Web Security</a>
                     </div>
                 </div>
-                <div >
+                <div>
                     <button className="btn-light">
                         <a href="/contact">Contact</a>
                     </button>
-                   
                 </div>
-                <button className="btn-light">
+                {!user ? (
+                    <button className="btn-light">
                         <a href="/register">Join Now</a>
                     </button>
+                ) : null}
+                {user ? (
+                    <button className="btn-light" onClick={handleLogout}>
+                        <a href="/">Log Out</a>
+                    </button>
+                ) : null}
             </div>
-            
         </nav>
     );
 }
