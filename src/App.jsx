@@ -87,7 +87,6 @@ function App() {
             <h2>Partner Google Cloud</h2>
             <h1>Stay a While!</h1>
             <p><strong>Thinking about enhancing your digital footprint?</strong></p>
-            <p>Let us show you how our digital services can drive your success.</p>
             <a href='/contact'><button className="consultation-btn">Book a Free Consultation</button></a>
           </div>
         </div>
