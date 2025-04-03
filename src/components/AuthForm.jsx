@@ -301,7 +301,7 @@ const AuthForm = () => {
             <h1>Create Account</h1>
             <div className="social-container">
               <button type="button" className='signup' onClick={handleGoogleAuth}>
-                <FcGoogle /><span>Sign up with Google</span>
+                <FcGoogle /><span>Continue with Google</span>
               </button>
             </div>
             <span>or use your email for registration</span>
@@ -339,7 +339,7 @@ const AuthForm = () => {
             <h1>Sign in</h1>
             <div className="social-container">
               <button type="button" className='signup' onClick={handleGoogleAuth}>
-                <FcGoogle /><span>Sign in with Google</span>
+                <FcGoogle /><span>Continue with Google</span>
               </button>
             </div>
             <span>or use your account</span>
